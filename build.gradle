@@ -3,7 +3,7 @@
 /////////////
 
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.6.10"
+    id "org.jetbrains.kotlin.jvm" version "1.7.20"
     id "java-library"
     id "maven-publish"
     id "signing"
@@ -22,11 +22,11 @@ repositories {
 }
 
 ext {
-    ktorVersion = "1.6.7"
+    ktorVersion = "2.2.3"
 }
 
 dependencies {
-    configurations.all {
+    configurations.configureEach {
         exclude group: "junit" // unneeded transitive dependency
     }
 
@@ -40,7 +40,7 @@ dependencies {
     // TESTING
     testImplementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.1"
     testImplementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1"
-    testImplementation "io.ktor:ktor-jackson:$ktorVersion"
+    testImplementation "io.ktor:ktor-serialization-jackson:$ktorVersion"
     testImplementation "io.ktor:ktor-server-cio:$ktorVersion"
     testImplementation "io.ktor:ktor-server-test-host:$ktorVersion"
     testImplementation "com.koriit.kotlin:ktor-time:0.3.0"
