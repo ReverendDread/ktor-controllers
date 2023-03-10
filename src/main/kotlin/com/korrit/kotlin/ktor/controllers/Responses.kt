@@ -2,7 +2,7 @@ package com.korrit.kotlin.ktor.controllers
 
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
-import io.ktor.routing.Route
+import io.ktor.server.routing.*
 import io.ktor.util.AttributeKey
 import kotlin.reflect.KClass
 

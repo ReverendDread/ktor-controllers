@@ -2,8 +2,8 @@ package com.korrit.kotlin.ktor.controllers.delegates
 
 import com.korrit.kotlin.ktor.controllers.Input
 import com.korrit.kotlin.ktor.controllers.exceptions.InputException
-import io.ktor.features.conversionService
-import java.lang.reflect.Type
+import io.ktor.server.plugins.dataconversion.conversionService
+import io.ktor.util.reflect.TypeInfo
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -17,7 +17,7 @@ import kotlin.reflect.KProperty
  */
 class QueryParamDelegate<T : Any?>(
     val name: String,
-    val type: Type,
+    val type: TypeInfo,
     private val receiver: Input<*>
 ) : ReadOnlyProperty<Any?, T> {
 
@@ -43,7 +43,7 @@ class QueryParamDelegate<T : Any?>(
      * @param default default value in case parameter was not provided, implies parameter is not required
      * @param receiver internal reference to the delegate receiver
      */
-    constructor(name: String, type: Type, receiver: Input<*>, default: T) : this(name, type, receiver) {
+    constructor(name: String, type: TypeInfo, receiver: Input<*>, default: T) : this(name, type, receiver) {
         this.defaultValueProvider = { default }
         this.required = false
     }

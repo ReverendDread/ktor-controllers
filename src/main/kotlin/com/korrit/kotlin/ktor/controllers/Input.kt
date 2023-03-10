@@ -1,12 +1,10 @@
 package com.korrit.kotlin.ktor.controllers
 
-import io.ktor.application.ApplicationCall
-import io.ktor.application.call
-import io.ktor.features.UnsupportedMediaTypeException
 import io.ktor.http.ContentType
-import io.ktor.request.contentType
-import io.ktor.request.receive
-import io.ktor.util.pipeline.PipelineContext
+import io.ktor.server.application.*
+import io.ktor.server.plugins.*
+import io.ktor.server.request.*
+import io.ktor.util.pipeline.*
 
 /** Shorthand alias of [PipelineContext]. */
 typealias Ctx = PipelineContext<Unit, ApplicationCall>

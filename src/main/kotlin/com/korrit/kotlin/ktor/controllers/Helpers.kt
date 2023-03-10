@@ -1,5 +1,6 @@
 package com.korrit.kotlin.ktor.controllers
 
+import io.ktor.server.application.*
 import io.ktor.server.engine.ApplicationEngine
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.trySendBlocking
@@ -13,7 +14,7 @@ import kotlinx.coroutines.runBlocking
 // TODO it may be that this function is not needed anymore after upgrading to Ktor 1.6
 fun ApplicationEngine.fullStart() {
     val started = Channel<Unit>(1)
-    environment.monitor.subscribe(io.ktor.application.ApplicationStarted) {
+    environment.monitor.subscribe(ApplicationStarted) {
         started.trySendBlocking(Unit)
     }
     start(wait = false)

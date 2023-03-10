@@ -1,6 +1,6 @@
 package com.korrit.kotlin.ktor.controllers.exceptions
 
-import io.ktor.features.BadRequestException
+import io.ktor.server.plugins.*
 
 /**
  * General exception related to input.
